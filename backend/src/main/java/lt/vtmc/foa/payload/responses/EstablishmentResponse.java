@@ -10,13 +10,15 @@ public class EstablishmentResponse {
     private String establishmentName;
 
 
-    private Long code;
+    private String code;
+    
+    private String address;
 
     public EstablishmentResponse() {
 
 	}
     
-    public EstablishmentResponse(String establishmentId, String establishmentName, Long code, String address) {
+    public EstablishmentResponse(String establishmentId, String establishmentName, String code, String address) {
 		super();
 		this.establishmentId = establishmentId;
 		this.establishmentName = establishmentName;
@@ -35,7 +37,7 @@ public class EstablishmentResponse {
 	}
 
 
-	public Long getCode() {
+	public String getCode() {
 		return code;
 	}
 
@@ -55,7 +57,7 @@ public class EstablishmentResponse {
 	}
 
 
-	public void setCode(Long code) {
+	public void setCode(String code) {
 		this.code = code;
 	}
 
@@ -63,7 +65,4 @@ public class EstablishmentResponse {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-
-
-	private String address;
 }

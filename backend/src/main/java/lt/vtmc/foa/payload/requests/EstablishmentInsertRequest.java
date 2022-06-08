@@ -9,7 +9,7 @@ public class EstablishmentInsertRequest {
     private String establishmentName;
 
     @NotBlank
-    private Long code;
+    private String code;
 
     @NotBlank
     private String address;
@@ -28,11 +28,11 @@ public class EstablishmentInsertRequest {
 		this.establishmentName = establishmentName;
 	}
 
-	public Long getCode() {
+	public String getCode() {
 		return code;
 	}
 
-	public void setCode(Long code) {
+	public void setCode(String code) {
 		this.code = code;
 	}
 

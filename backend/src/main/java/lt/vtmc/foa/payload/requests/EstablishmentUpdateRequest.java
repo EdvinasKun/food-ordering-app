@@ -11,7 +11,7 @@ public class EstablishmentUpdateRequest {
     private String establishmentName;
 
     @NotBlank
-    private Long code;
+    private String code;
 
     @NotBlank
     private String address;
@@ -24,7 +24,7 @@ public class EstablishmentUpdateRequest {
 		return establishmentName;
 	}
 
-	public Long getCode() {
+	public String getCode() {
 		return code;
 	}
 

@@ -34,13 +34,13 @@ public class EstablishmentService {
 				);
 		
 		establishment.setEstablishmentName(establishmentRequest.getEstablishmentName());
-		establishment.setCode(establishmentRequest.getCode());
+		establishment.setCode(Long.parseLong(establishmentRequest.getCode()));
 		establishment.setAddress(establishmentRequest.getAddress());
 		establishmentRepository.save(establishment);
 		return new EstablishmentResponse(
 				establishment.getId().toString(),
 				establishment.getEstablishmentName(),
-				establishment.getCode(),
+				establishment.getCode().toString(),
 				establishment.getAddress());
 		
 	}
