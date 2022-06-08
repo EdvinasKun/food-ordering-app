@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import AuthService from "../services/auth.service";
 import establishmentService from "../services/establishmentService";
 
@@ -8,15 +8,44 @@ import { useNavigate } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 export default function Profile () {
 
+  const [forceRender, setForceRender] = useState(false);
+
   const currentUser = AuthService.getCurrentUser();
 
-  const establishtment = establishmentService.getEstablihsments();
+  const [establishment, setAllEstablishment] = useState([]);
+
+  useEffect(() => {
+    // code to run after render goes here
+    
+    setAllEstablishment(establishmentService.getEstablishments());
+    //console.log(establishmentService.getEstablishments());
+    console.log(establishment);
+  }, []); // <-- empty array means 'run once'
+
+  // useEffect(() => {
+  //   (async () => {
+  //     try {
+  //       const response = await axios.request({
+  //         data: payload,
+  //         signal: controllerRef.current.signal,
+  //         method,
+  //         url,
+  //       });
+  //       setData(response.data);
+  //     } catch (error) {
+  //       setError(error.message);
+  //     } finally {
+  //       setLoaded(true);
+  //     }
+  //   })();
+  // }, []);
 
   const onSubmit = (data) => {
     establishmentService.insertEstablihsment(data.name, data.code, data.address)
       .then(() => {
         
         //window.location.reload();
+
       })
     };
       const { register, handleSubmit, watch, formState: { errors } } = useForm({ mode: 'onSubmit', reValidateMode: 'onSubmit' });
@@ -94,8 +123,8 @@ export default function Profile () {
           <header className="jumbotron">
             <h3>
               <ul>
-                {establishtment.establishmentName &&
-                  establishtment.establishmentName.map((name, index) => <li key={index}>{name}</li>)}
+                {establishment.establishmentName &&
+                  establishment.establishmentName.map((name, index) => <li key={index}>{name}</li>)}
               </ul>
             </h3>
           </header>

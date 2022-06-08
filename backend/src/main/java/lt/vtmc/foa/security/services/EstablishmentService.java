@@ -1,12 +1,10 @@
 package lt.vtmc.foa.security.services;
 
-import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.util.Optional;
+
+
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import lt.vtmc.foa.models.Establishment;
@@ -50,5 +48,8 @@ public class EstablishmentService {
 		establishmentRepository.delete(establishmentRepository.getById(Long.valueOf(id)));
 		
 		return null;
+	}
+	public List<Establishment> getAllEstablishments() {
+		return establishmentRepository.findAll();
 	}
 }
