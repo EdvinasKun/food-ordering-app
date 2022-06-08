@@ -6,6 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name="establishments")
@@ -18,7 +19,7 @@ public class Establishment {
     @NotBlank
     private String establishmentName;
     
-    @NotBlank
+    @NotNull
     private Long code;
 
     @NotBlank
@@ -63,8 +64,8 @@ public class Establishment {
 		return address;
 	}
 
-	public void setAddress(String adress) {
-		this.address = adress;
+	public void setAddress(String address) {
+		this.address = address;
 	}
     
 }
