@@ -6,7 +6,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name="establishments")
@@ -14,13 +13,13 @@ public class Establishment {
 	
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long Id;
+    private Long id;
     
     @NotBlank
     private String establishmentName;
     
-    @NotNull
-    private Long code;
+    @NotBlank
+    private String code;
 
     @NotBlank
     private String address;
@@ -28,20 +27,20 @@ public class Establishment {
 	public Establishment() {
 
 	}
-	public Establishment(Long id, @NotBlank String establishmentName, @NotBlank Long code, @NotBlank String address) {
+	public Establishment(Long id, @NotBlank String establishmentName, @NotBlank String code, @NotBlank String address) {
 		super();
-		Id = id;
+		this.id = id;
 		this.establishmentName = establishmentName;
 		this.code = code;
 		this.address = address;
 	}
 
 	public Long getId() {
-		return Id;
+		return id;
 	}
 
 	public void setId(Long id) {
-		Id = id;
+		this.id = id;
 	}
 
 	public String getEstablishmentName() {
@@ -52,11 +51,11 @@ public class Establishment {
 		this.establishmentName = establishmentName;
 	}
 
-	public Long getCode() {
+	public String getCode() {
 		return code;
 	}
 
-	public void setCode(Long code) {
+	public void setCode(String code) {
 		this.code = code;
 	}
 

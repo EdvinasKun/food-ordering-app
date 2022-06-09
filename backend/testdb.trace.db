@@ -1,0 +1,3 @@
+2022-06-09 18:29:58 jdbc[74]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "'test' (ESTABLISHMENTS: ""CODE"" BIGINT NOT NULL)"; SQL statement:
+insert into establishments (address, code, establishment_name, id) values (?, ?, ?, ?) [22018-200]

@@ -4,7 +4,7 @@ package lt.vtmc.foa.payload.responses;
 public class EstablishmentResponse {
 
 
-    private String establishmentId;
+    private Long establishmentId;
     
 
     private String establishmentName;
@@ -18,7 +18,7 @@ public class EstablishmentResponse {
 
 	}
     
-    public EstablishmentResponse(String establishmentId, String establishmentName, String code, String address) {
+    public EstablishmentResponse(Long establishmentId, String establishmentName, String code, String address) {
 		super();
 		this.establishmentId = establishmentId;
 		this.establishmentName = establishmentName;
@@ -27,7 +27,7 @@ public class EstablishmentResponse {
 	}
 
 
-	public String getEstablishmentId() {
+	public Long getEstablishmentId() {
 		return establishmentId;
 	}
 
@@ -47,7 +47,7 @@ public class EstablishmentResponse {
 	}
 
 
-	public void setEstablishmentId(String establishmentId) {
+	public void setEstablishmentId(Long establishmentId) {
 		this.establishmentId = establishmentId;
 	}
 

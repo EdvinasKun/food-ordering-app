@@ -24,6 +24,8 @@ public class EstablishmentUpdateRequest {
 		return establishmentName;
 	}
 
+	
+
 	public String getCode() {
 		return code;
 	}

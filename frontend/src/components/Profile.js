@@ -6,6 +6,7 @@ import Form from 'react-bootstrap/Form'
 
 import { useNavigate } from 'react-router-dom';
 import { useForm } from "react-hook-form";
+import { render } from "@testing-library/react";
 export default function Profile () {
 
   const [forceRender, setForceRender] = useState(false);
@@ -15,46 +16,32 @@ export default function Profile () {
   const [establishment, setEstablishment] = useState([]);
 
   useEffect(() => {
-    // code to run after render goes here
-    establishmentService.getEstablishments() .then((response) => {
-        
-      console.log("use: " + response.data);
-      setEstablishment(response.data);
-   
-  });
+      // code to run after render goes here
+      establishmentService.getEstablishments() .then((response) => {
+          
+        // console.log( response.data);
+        setEstablishment(response.data);
+        //console.log(establishment);
+      });
     
-    
-    //console.log(establishmentService.getEstablishments());
-    console.log("Est:" + establishment);
-  }, []); // <-- empty array means 'run once'
+  }, [forceRender]); // <-- empty array means 'run once'
 
-  // useEffect(() => {
-  //   (async () => {
-  //     try {
-  //       const response = await axios.request({
-  //         data: payload,
-  //         signal: controllerRef.current.signal,
-  //         method,
-  //         url,
-  //       });
-  //       setData(response.data);
-  //     } catch (error) {
-  //       setError(error.message);
-  //     } finally {
-  //       setLoaded(true);
-  //     }
-  //   })();
-  // }, []);
 
-  const onSubmit = (data) => {
-    establishmentService.insertEstablihsment(data.name, data.code, data.address)
-      .then(() => {
-        
-        //window.location.reload();
+  const onSubmit = data => {
+    console.log(data);
+    establishmentService.insertEstablihsment(data.name, data.code, data.address).then((response) => {
+      
+    });
+    setForceRender(!forceRender);
 
-      })
-    };
-      const { register, handleSubmit, watch, formState: { errors } } = useForm({ mode: 'onSubmit', reValidateMode: 'onSubmit' });
+};
+
+      const { 
+        register, 
+        handleSubmit, 
+
+        formState: { errors } 
+      } = useForm({ mode: 'onSubmit', reValidateMode: 'onSubmit' });
       const navigate = useNavigate();
 
     return (
@@ -84,33 +71,35 @@ export default function Profile () {
               {/* <h2 className="sr-only">Login Form</h2> */}
               
               <div className="form-group">
-                <input
+                <input defaultValue="test"
                   {...register("name", { required: true })}
                   className="form-control"
                   //validating by email
                   // type="email"
                   name="email"
                   placeholder="Email"
+
                 />
               </div>
               <div className="form-group">
-                <input
+                <input defaultValue="123"
                   {...register("code", { required: true })}
                   className="form-control"
                   //validating by email
                   // type="email"
-                  name="email"
                   placeholder="Email"
+                  type = "number"
                 />
               </div>
               <div className="form-group">
-                <input
+                <input defaultValue="test"
                   {...register("address", { required: true })}
                   className="form-control"
                   //validating by email
                   // type="email"
                   name="email"
                   placeholder="Email"
+
                 />
               </div>
               <div className="form-group">
@@ -121,18 +110,26 @@ export default function Profile () {
                   Log In
                 </button>
               </div>
-              <a href="#" className="forgot">
-                Forgot your email or password?
-              </a>
+              
             </form>
           </div>
           <header className="jumbotron">
-            <h3>
+            {/* <h3>
               <ul>
                 {establishment.establishmentName &&
                   establishment.establishmentName.map((name, index) => <li key={index}>{name}</li>)}
               </ul>
-            </h3>
+            </h3> */}
+            {establishment.map((est) => {
+              return (
+                <div key={est.id}>
+                  <h1>{est.id}</h1>
+                  <div>{est.establishmentName}</div>
+                  <div>{est.code}</div>
+                  <div>{est.address}</div>
+                </div>
+              )
+            })}
           </header>
         </div>
 
