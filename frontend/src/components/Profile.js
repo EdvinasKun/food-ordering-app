@@ -12,14 +12,20 @@ export default function Profile () {
 
   const currentUser = AuthService.getCurrentUser();
 
-  const [establishment, setAllEstablishment] = useState([]);
+  const [establishment, setEstablishment] = useState([]);
 
   useEffect(() => {
     // code to run after render goes here
+    establishmentService.getEstablishments() .then((response) => {
+        
+      console.log("use: " + response.data);
+      setEstablishment(response.data);
+   
+  });
     
-    setAllEstablishment(establishmentService.getEstablishments());
+    
     //console.log(establishmentService.getEstablishments());
-    console.log(establishment);
+    console.log("Est:" + establishment);
   }, []); // <-- empty array means 'run once'
 
   // useEffect(() => {

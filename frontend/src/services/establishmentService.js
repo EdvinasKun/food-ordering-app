@@ -11,12 +11,8 @@ const API_URL = "http://localhost:8080/api/establishment/";
 
 const getEstablishments = () =>{
     return axios
-    .get(API_URL + "all", { headers: authHeader() } )
-    .then((response) => {
-        
-          console.log(response.data);
-        return JSON.stringify(response.data || {});
-      });;
+    .get(API_URL + "all", { headers: authHeader() } );
+   
       
 }
 const insertEstablihsment = (establishmentName, code, address) =>{
