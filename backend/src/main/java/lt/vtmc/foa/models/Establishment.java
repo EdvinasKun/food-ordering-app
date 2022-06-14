@@ -1,9 +1,13 @@
 package lt.vtmc.foa.models;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
@@ -23,6 +27,12 @@ public class Establishment {
 
     @NotBlank
     private String address;
+    
+    
+//    @OneToMany(
+//    	mappedBy = "establishment")
+//    
+//    private List<Menu> menus;
 
 	public Establishment() {
 

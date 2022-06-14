@@ -57,6 +57,7 @@ public class EstablishmentService {
 		//Establishment updatingEstablishment = establishmentRepository.getById(Long.valueOf(establishmentUpdateRequest.getEstablishmentId()));
 		String establishmentName = establishmentUpdateRequest.getEstablishmentName();
         String updatingEstablishmentName = establishmentName.substring(0, 1).toUpperCase() + establishmentName.substring(1);
+        
         updatingEstablishment.setEstablishmentName(updatingEstablishmentName);
         updatingEstablishment.setCode(establishmentUpdateRequest.getCode());
         updatingEstablishment.setAddress(establishmentUpdateRequest.getAddress());
