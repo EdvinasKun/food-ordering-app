@@ -29,6 +29,6 @@ public class Menu {
     
     @ManyToOne
     @JoinColumn(name = "establishments_id")
-    @JsonIgnore
+    //@JsonIgnore
     private Establishment establishment;
 }
