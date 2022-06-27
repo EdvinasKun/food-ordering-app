@@ -1,3 +1,6 @@
 2022-06-09 18:29:58 jdbc[74]: exception
 org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "'test' (ESTABLISHMENTS: ""CODE"" BIGINT NOT NULL)"; SQL statement:
 insert into establishments (address, code, establishment_name, id) values (?, ?, ?, ?) [22018-200]
+2022-06-27 18:31:44 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE ORDER[*] (ID BIGINT NOT NULL, PRIMARY KEY (ID))"; expected "identifier"; SQL statement:
+create table order (id bigint not null, primary key (id)) [42001-200]

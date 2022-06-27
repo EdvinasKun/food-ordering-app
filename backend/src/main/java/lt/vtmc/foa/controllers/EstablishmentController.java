@@ -7,6 +7,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -35,18 +36,21 @@ public class EstablishmentController {
 	public EstablishmentController(EstablishmentService establishmentService) {
 		this.establishmentService = establishmentService;
 	}
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
 	public EstablishmentResponse insertEstablishment(@Valid @RequestBody EstablishmentInsertRequest establishmentInsertRequest) {
 		return this.establishmentService.saveEstablishment(establishmentInsertRequest);
 	}
 	//(path = "/{id}")
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@PutMapping("/{id}")
 	@ResponseStatus(HttpStatus.OK)
-	public EstablishmentResponse updateEstablishment(@RequestBody EstablishmentUpdateRequest establishmentUpdateRequest, @PathVariable Long id) {
+	public EstablishmentResponse updateEstablishment(@Valid @RequestBody EstablishmentUpdateRequest establishmentUpdateRequest, @PathVariable Long id) {
 		return this.establishmentService.updateEstablishment(id, establishmentUpdateRequest);
 	}
 	
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@DeleteMapping("/{id}")
 	@ResponseStatus(HttpStatus.OK)
 	public EstablishmentResponse deleteEstablishment(@PathVariable String id) {
@@ -54,7 +58,8 @@ public class EstablishmentController {
 	}
 	
 	@GetMapping
-	public ResponseEntity<List<Establishment>> getAllEstablishmentsId() {
+	public ResponseEntity<List<Establishment>> getAllEstablishments() {
 		return ResponseEntity.ok().body(this.establishmentService.getAllEstablishments());
 	}
+
 }
